@@ -44,13 +44,16 @@ add_library(Qt::Qt1 ALIAS Qt1)
 target_link_libraries(Qt1
     PRIVATE
         ${X11_LIBRARIES}
+        ${GLIB_LIBRARIES}
+        ${JPEG_LIBRARIES}
+        PNG::PNG
     )
 if(ENABLE_OPENGL)
     target_link_libraries(Qt1 PRIVATE OpenGL::GL X11::Xmu)
 endif()
 
 set_target_properties(Qt1 PROPERTIES
-    OUTPUT_NAME qt1
+    OUTPUT_NAME roly
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
     LINK_FLAGS "-Wl,--as-needed -Wl,--no-undefined"
@@ -62,6 +65,8 @@ target_include_directories(Qt1
         $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
     PRIVATE
         ${X11_INCLUDE_DIR}
+        ${GLIB_INCLUDE_DIRS}
+        ${JPEG_INCLUDE_DIRS}
     )
 
 install(TARGETS Qt1 EXPORT Qt1Targets

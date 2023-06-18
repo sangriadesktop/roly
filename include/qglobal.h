@@ -25,8 +25,8 @@
 #define QGLOBAL_H
 
 
-#define QT_VERSION	145
-#define QT_VERSION_STR	"1.45"
+#define QT_VERSION	148
+#define QT_VERSION_STR	"1.489"
 
 
 //

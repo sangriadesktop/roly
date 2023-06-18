@@ -32,6 +32,7 @@
 #include "qdict.h"
 #include "qintdict.h"
 #include "qasyncimageio.h"
+#include "qimageio.h"
 #include <stdlib.h>
 #include <ctype.h>
 
@@ -2213,6 +2214,7 @@ QStrList QImage::outputFormats()
 
 bool QImage::load( const char *fileName, const char *format )
 {
+    debug("QImage::load: The file name is %s and the format is %s", fileName, format);
     QImageIO io( fileName, format );
     bool result = io.read();
     if ( result )
@@ -2522,6 +2524,7 @@ static void init_image_handlers()		// initialize image handlers
 				   read_xbm_image, write_xbm_image );
 	QImageIO::defineIOHandler( "XPM", "/\\*.XPM.\\*/", "T",
 				   read_xpm_image, write_xpm_image );
+    qInitImageIO();
     }
 }
 

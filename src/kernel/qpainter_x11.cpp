@@ -2156,8 +2156,15 @@ void QPainter::drawQuadBezier( const QPointArray &a, int index )
 void QPainter::drawPixmap( int x, int y, const QPixmap &pixmap,
 			   int sx, int sy, int sw, int sh )
 {
-    if ( !isActive() || pixmap.isNull() )
-	return;
+    if ( !isActive() ) {
+        debug("QPainter: Inactive.");
+	    return;
+    }
+
+    if ( pixmap.isNull() ) {
+        warning("QPainter: Pixmap is null.");
+        return;
+    }
 
     // right/bottom
     if ( sw < 0 )

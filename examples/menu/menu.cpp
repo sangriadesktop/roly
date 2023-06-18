@@ -230,7 +230,7 @@ void MenuExample::about()
 
 void MenuExample::aboutQt()
 {
-    QMessageBox::aboutQt( this, "Qt Menu Example" );
+    QMessageBox::aboutRoly( this, "Qt Menu Example" );
 }
 
 

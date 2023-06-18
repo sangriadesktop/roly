@@ -31,8 +31,8 @@ extern "C" {
 #undef const // Remove crazy C hackery in jconfig.h
 #endif
 }
-#include <qimage.h>
-#include <qiodevice.h>
+#include "qimage.h"
+#include "qiodevice.h"
 
 struct my_error_mgr : public jpeg_error_mgr {
     jmp_buf setjmp_buffer;

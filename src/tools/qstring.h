@@ -29,7 +29,7 @@
 #include "qarray.h"
 #endif // QT_H
 
-#include <string.h>
+#include <cstring>
 
 #if defined(_OS_SUN_) && defined(_CC_GNU_)
 #include <strings.h>

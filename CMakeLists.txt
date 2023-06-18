@@ -26,8 +26,8 @@
 
 cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
 
-project(qt1
-    VERSION 1.45
+project(roly
+    VERSION 1.499
     LANGUAGES C CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
@@ -37,9 +37,9 @@ include(Qt1Utils)
 include(Qt1SystemCheck)
 include(Qt1InternalBuild)
 
-set(CMAKE_VERBOSE_MAKEFILE ON)
+set(CMAKE_VERBOSE_MAKEFILE OFF)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-set(CMAKE_CXX_STANDARD 98)
+set(CMAKE_CXX_STANDARD 11)
 set(BUILD_SHARED_LIBS ON)
 
 option(ENABLE_THREAD_SUPPORT "Compile with Threading Support" ON)
@@ -66,6 +66,10 @@ endif()
 find_package(X11 REQUIRED)
 find_package(BYACC REQUIRED)
 find_package(FLEX REQUIRED)
+pkg_search_module(GLIB REQUIRED glib-2.0)
+
+find_package(PNG REQUIRED)
+find_package(JPEG REQUIRED)
 
 add_subdirectory(src)
 add_subdirectory(include)

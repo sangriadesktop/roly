@@ -29,7 +29,7 @@ int main( int argc, char **argv )
     if ( s.isEmpty() )
 	s = "Hello, World";
     Hello h( s );
-    h.setCaption( "Qt says hello" );
+    h.setCaption( "Roly says hello" );
     QObject::connect( &h, SIGNAL(clicked()), &a, SLOT(quit()) );
     h.setFont( QFont("times",32,QFont::Bold) );		// default font
     h.setBackgroundColor( white );			// default bg color

@@ -1624,8 +1624,15 @@ void QPainter::drawPixmap( const QPoint &p, const QPixmap &pm )
 void QPainter::drawImage( int x, int y, const QImage & image,
 			    int sx, int sy, int sw, int sh )
 {
-    if ( !isActive() || image.isNull() )
-	return;
+    if ( !isActive() ) {
+        debug("QPainter: Inactive.");
+        return;
+    }
+
+    if ( image.isNull() ) {
+        warning("QPainter: Image is null.");
+        return;
+    }
 
     // right/bottom
     if ( sw < 0 )

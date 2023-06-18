@@ -26,6 +26,8 @@
 
 void qInitImageIO()
 {
+#if 0
     qInitJpegIO();
     qInitPngIO();
+#endif
 }

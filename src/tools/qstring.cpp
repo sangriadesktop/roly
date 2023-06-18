@@ -25,10 +25,10 @@
 #define	 QSTRING_C
 #include "qstring.h"
 #include "qdatastream.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <ctype.h>
+#include <cstdio>
+#include <cstdarg>
+#include <cstdlib>
+#include <cctype>
 
 /*****************************************************************************
   Safe and portable C string functions; extensions to standard string.h

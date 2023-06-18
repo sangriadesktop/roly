@@ -1238,15 +1238,10 @@ int QMessageBox::critical( QWidget *parent, const char *caption,
 }
 
 
-static const char *textAboutQt =
-"This program is developed with Qt, the multi-platform C++ GUI toolkit.\n\n"
-"Qt is a product of Troll Tech AS (http://www.troll.no).\n"
-"Qt is available under two different licenses:\n"
-"- The Free Edition, which may be used free of charge to develop\n"
-"  Free Software on the X Window System.\n"
-"- The Professional Edition, which may be used to develop commercial\n"
-"  software on both X and Microsoft Windows.\n\n"
-"Please contact sales@troll.no for information and pricing.";
+static const char *textAboutRoly =
+"This program is developed with Roly, a fork of the first version of QT.\n\n"
+"Roly is a product of Chaziz.\n"
+"Unfortunately, QT1's licensing is kinda wonky.\n";
 
 
 /*!
@@ -1259,7 +1254,13 @@ static const char *textAboutQt =
 
 void QMessageBox::aboutQt( QWidget *parent, const char *caption )
 {
+    debug("aboutQt is deprecated in favor of aboutRoly.");
+    aboutRoly(parent, caption);
+}
+
+void QMessageBox::aboutRoly( QWidget *parent, const char *caption )
+{
     if ( !caption )
-	caption = "About Qt";
-    information( parent, caption, textAboutQt );
+	caption = "About Roly";
+    information( parent, caption, textAboutRoly );
 }

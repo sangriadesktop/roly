@@ -88,6 +88,8 @@ public:
 
     static void aboutQt( QWidget *parent, const char *caption=0 );
 
+    static void aboutRoly( QWidget *parent, const char *caption=0 );
+
 #if 1 /* OBSOLETE */
     static int message( const char *caption,
 			const char *text,  const char *buttonText=0,

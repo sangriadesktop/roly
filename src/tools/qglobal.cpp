@@ -15,7 +15,7 @@
 ** IMPORTANT NOTE: You may NOT copy this file or any part of it into
 ** your own programs or libraries.
 **
-** Please see http://www.troll.no/pricing.html for information about 
+** Please see http://www.troll.no/pricing.html for information about
 ** Qt Professional Edition, which is this same library but with a
 ** license which allows creation of commercial/proprietary software.
 **
@@ -24,9 +24,10 @@
 #include "qglobal.h"
 #include "qdict.h"
 #include "qstring.h"
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cstdarg>
+#include <cstdlib>
+#include <iostream>
 
 /*!
   \relates QApplication
@@ -164,13 +165,13 @@ void debug( const char *msg, ... )
     va_list ap;
     va_start( ap, msg );			// use variable arg list
     if ( handler ) {
-	vsprintf( buf, msg, ap );
-	va_end( ap );
-	(*handler)( QtDebugMsg, buf );
+        vsprintf( buf, msg, ap );
+        va_end( ap );
+        (*handler)( QtDebugMsg, buf );
     } else {
-	vfprintf( stderr, msg, ap );
-	va_end( ap );
-	fprintf( stderr, "\n" );		// add newline
+        vsprintf( buf, msg, ap );
+        va_end( ap );
+        std::cout << buf << std::endl;
     }
 }
 
@@ -208,13 +209,13 @@ void warning( const char *msg, ... )
     va_list ap;
     va_start( ap, msg );			// use variable arg list
     if ( handler ) {
-	vsprintf( buf, msg, ap );
-	va_end( ap );
-	(*handler)( QtWarningMsg, buf );
+        vsprintf( buf, msg, ap );
+        va_end( ap );
+        (*handler)( QtWarningMsg, buf );
     } else {
-	vfprintf( stderr, msg, ap );
-	va_end( ap );
-	fprintf( stderr, "\n" );		// add newline
+        vsprintf( buf, msg, ap );
+        va_end( ap );
+        std::cerr << buf << std::endl;
     }
 }
 
@@ -254,17 +255,18 @@ void fatal( const char *msg, ... )
     va_list ap;
     va_start( ap, msg );			// use variable arg list
     if ( handler ) {
-	vsprintf( buf, msg, ap );
-	va_end( ap );
-	(*handler)( QtFatalMsg, buf );
+        vsprintf( buf, msg, ap );
+        va_end( ap );
+        (*handler)( QtFatalMsg, buf );
     } else {
-	vfprintf( stderr, msg, ap );
-	va_end( ap );
-	fprintf( stderr, "\n" );		// add newline
+        vsprintf( buf, msg, ap );
+        va_end( ap );
+        std::cerr << "[FATAL ERROR] " << buf << std::endl;
+
 #if defined(UNIX) && defined(DEBUG)
-	abort();				// trap; generates core dump
+        abort();				// trap; generates core dump
 #else
-	exit( 1 );				// goodbye cruel world
+        exit( 1 );				// goodbye cruel world
 #endif
     }
 }
